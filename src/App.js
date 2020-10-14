@@ -17,19 +17,19 @@ const CustomTextInput = ({ label, ...props }) => {
   );
 };
 
-const CustomSelect = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
+// const CustomSelect = ({ label, ...props }) => {
+//   const [field, meta] = useField(props);
 
-  return (
-    <>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <select {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </>
-  );
-};
+//   return (
+//     <>
+//       <label htmlFor={props.id || props.name}>{label}</label>
+//       <select {...field} {...props} />
+//       {meta.touched && meta.error ? (
+//         <div className="error">{meta.error}</div>
+//       ) : null}
+//     </>
+//   );
+// };
 
 const App = () => {
   const [cards, setCards] = useState([]);
@@ -51,12 +51,12 @@ const App = () => {
             .min(3, 'Must be at least 3 characters')
             .max(15, 'Must be 15 characters or less')
             .required('Required'),
-          specialPower: Yup.string()
-            .oneOf(
-              ['flight', 'invisibility', 'wealthy bat guy', 'other'],
-              'Invalid Special Power'
-            )
-            .required('Required'),
+          // specialPower: Yup.string()
+          //   .oneOf(
+          //     ['flight', 'invisibility', 'wealthy bat guy', 'other'],
+          //     'Invalid Special Power'
+          //   )
+          //   .required('Required'),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           // console.log(JSON.stringify(values.name, null, 2));
@@ -77,13 +77,13 @@ const App = () => {
               type="text"
               placeholder="Frank"
             />
-            <CustomSelect label="Special Power" name="specialPower">
+            {/* <CustomSelect label="Special Power" name="specialPower">
               <option value="">Select a Special Power</option>
               <option value="flight">flight</option>
               <option value="invisibility">invisibility</option>
               <option value="wealthy bat guy">wealthy bat guy</option>
               <option value="other">other</option>
-            </CustomSelect>
+            </CustomSelect> */}
             <button type="submit">
               {props.isSubmitting ? 'Loading...' : 'Submit'}
             </button>
